@@ -11,4 +11,6 @@ public interface PessoaService extends Serializable{
 
 	public List <PessoaEntity> findByNome(String nome) throws InvalidFieldException;
 	public PessoaEntity save(PessoaEntity pessoa) throws InvalidFieldException;
+	public List<PessoaEntity> findAll() throws InvalidFieldException;
+	public boolean Delete(Long id) throws InvalidFieldException;
 }

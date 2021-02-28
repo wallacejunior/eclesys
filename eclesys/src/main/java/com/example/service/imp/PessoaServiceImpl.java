@@ -24,10 +24,22 @@ public class PessoaServiceImpl implements PessoaService{
 		return pessoaRepository.findByNome(nome);
 		
 	}
+	
+	@Override
+	public List<PessoaEntity> findAll() throws InvalidFieldException{
+		return pessoaRepository.findAll();
+	}
 
 	@Override
 	public PessoaEntity save(PessoaEntity pessoa) throws InvalidFieldException {
 		return pessoaRepository.save(pessoa);
+	}
+
+	@Override
+	public boolean Delete(Long id) throws InvalidFieldException {
+		boolean retorno=false;
+		pessoaRepository.deleteById(id);
+		return retorno;
 	}
 
 }

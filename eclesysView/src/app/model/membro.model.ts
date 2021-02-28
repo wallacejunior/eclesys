@@ -1,4 +1,6 @@
-export class membro{
+import { Endereco } from "./endereco.model";
+
+export class Membro{
 
     constructor(public id: string,
         public nome: string,
@@ -9,7 +11,7 @@ export class membro{
         public cpf: string,
         public estadoCivil: string,
         public Situacao: string,
-        public endereco: string){
+        public endereco: Endereco){
         
 
     }
