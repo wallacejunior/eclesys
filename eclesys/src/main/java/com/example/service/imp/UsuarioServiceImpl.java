@@ -25,6 +25,13 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return usuarioRepository.findByNome(nome);
 		
 	}
+	
+	@Override
+	@Transactional
+	public UsuarioEntity findByEmail(String email) {
+		return usuarioRepository.findByEmail(email);
+		
+	}
 
 	@Override
 	@Transactional

@@ -9,5 +9,6 @@ import com.igrejaApp.Exceptions.InvalidFieldException;
 public interface UsuarioService extends Serializable{
 
 	public List <UsuarioEntity> findByNome(String nome) throws InvalidFieldException;
+	public UsuarioEntity findByEmail(String email);
 	public UsuarioEntity save(UsuarioEntity pessoa) throws InvalidFieldException;
 }

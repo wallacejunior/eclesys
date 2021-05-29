@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.example.enums.ProfileEnum;
+
 
 
 @Entity(name="usuario")
@@ -14,17 +16,15 @@ public class UsuarioEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	@Column(nullable=false)
 	private String nome;
 	private String fone;
 	@Column(nullable=false)
 	private String email;
-	@Column(nullable=false)
 	private String login;
 	@Column(nullable=false)
-	private String senha;
+	private String password;
 	private String situacao;
-	private String tpUsuario;
+	private ProfileEnum profile;
 	
 	public Long getId() {
 		return id;
@@ -56,11 +56,11 @@ public class UsuarioEntity {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getSituacao() {
 		return situacao;
@@ -68,10 +68,10 @@ public class UsuarioEntity {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
-	public String getTipo() {
-		return tpUsuario;
+	public ProfileEnum getProfile() {
+		return profile;
 	}
-	public void setTipo(String tpUsuario) {
-		this.tpUsuario = tpUsuario;
+	public void setProfile(ProfileEnum profile) {
+		this.profile = profile;
 	}
 }
