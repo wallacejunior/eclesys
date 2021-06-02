@@ -14,7 +14,7 @@ import com.example.entity.PatrimonioEntity;
 import com.example.repository.PatrimonioRepository;
 
 @RestController
-@RequestMapping(value="eclesys/Patrimonio")
+@RequestMapping(value="/Patrimonio")
 public class PatrimonioController {
 
 	@Autowired

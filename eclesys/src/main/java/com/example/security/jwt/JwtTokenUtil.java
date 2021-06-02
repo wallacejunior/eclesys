@@ -25,7 +25,7 @@ public class JwtTokenUtil implements Serializable{
 	@Value("${jwt.secret}")
 	private String secret;
 	
-	@Value("${jwt.secret}")
+	@Value("${jwt.expiration}")
 	private Long expiration;
 
 	public String getUsernameFromToken(String token){
@@ -72,6 +72,8 @@ public class JwtTokenUtil implements Serializable{
 	public String generateToken(UserDetails userDetails){
 		Map<String, Object> claims = new HashMap<>();
 		
+		claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
+		
 		final Date createdDate = new Date();
 		claims.put(CLAIM_KEY_CREATED, createdDate);
 		
@@ -104,8 +106,8 @@ public class JwtTokenUtil implements Serializable{
 		return refreshedToken;
 	}
 	
-	public Boolean validateToken(String token, UserDetails userdetails){
-		JwtUser user = (JwtUser) userdetails;
+	public Boolean validateToken(String token, UserDetails userDetails){
+		JwtUser user = (JwtUser) userDetails;
 		final String username = getUsernameFromToken(token);
 		return (
 				username.equals(user.getUsername())

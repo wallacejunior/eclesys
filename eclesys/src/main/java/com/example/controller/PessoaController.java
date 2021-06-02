@@ -17,7 +17,7 @@ import com.example.service.PessoaService;
 import com.igrejaApp.Exceptions.InvalidFieldException;
 
 @RestController
-@RequestMapping(value="eclesys/membro")
+@RequestMapping(value="/membro")
 public class PessoaController {
 
 	@Autowired

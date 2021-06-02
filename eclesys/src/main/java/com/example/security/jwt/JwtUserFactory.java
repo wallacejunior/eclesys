@@ -17,8 +17,8 @@ public class JwtUserFactory {
 	
 	public static JwtUser create(UsuarioEntity user){
 		return new JwtUser(user.getId().toString(),
-				user.getEmail().toString(),
-				user.getPassword().toString(),
+				user.getEmail(),
+				user.getPassword(),
 				mapToGrantedAuthorities(user.getProfile()));
 	}
 	

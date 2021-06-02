@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entity.DepartamentoEntity;
 
 @RestController
-@RequestMapping(value="/eclesys/departamento")
+@RequestMapping(value="/departamento")
 public class DepartamentoRepository {
 
 	@Autowired

@@ -9,7 +9,9 @@ import com.example.entity.UsuarioEntity;
 
 public interface UsuarioRepository extends JpaRepository <UsuarioEntity,Long> {
 
-	List<UsuarioEntity> findByNome(String nome) ;
-	UsuarioEntity save(Optional<UsuarioEntity> usuario) ;
 	UsuarioEntity findByEmail(String email);
+	Optional<UsuarioEntity> findById(String id) ;
+	UsuarioEntity createOrUpdate(UsuarioEntity usuario) ;
+	UsuarioEntity deleteById(String id);
+	
 }

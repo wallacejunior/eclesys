@@ -1,9 +1,10 @@
-package com.example;
+package com;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,10 +14,8 @@ import com.example.entity.UsuarioEntity;
 import com.example.enums.ProfileEnum;
 import com.example.repository.UsuarioRepository;
 
-@SpringBootApplication
+@SpringBootApplication//(exclude = { SecurityAutoConfiguration.class })
 @EntityScan(basePackages = {"com.example.entity"})
-@ComponentScan (basePackages = {"com.example.repository"}) 
-//@EnableJpaRepositories (basePackages = "com.example.repository") 
 public class IgrejaAppApplication  {
 
 	public static void main(String[] args) {
@@ -42,9 +41,9 @@ public class IgrejaAppApplication  {
 		}
 	}
 	
-	@Bean
-	public PasswordEncoder passwordEncoder(){
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	public PasswordEncoder passwordEncoder(){
+//		return new BCryptPasswordEncoder();
+//	}
 
 }

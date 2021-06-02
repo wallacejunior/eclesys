@@ -11,7 +11,7 @@ import com.example.entity.EnderecoEntity;
 import com.example.repository.EnderecoRepository;
 
 @RestController
-@RequestMapping(value="/eclesys/Endereco")
+@RequestMapping(value="/Endereco")
 public class EnderecoController {
 
 	@Autowired

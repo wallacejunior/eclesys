@@ -25,18 +25,19 @@ public class SimpleCORSFilter implements Filter{
 	
 	@Override
 	public void init(FilterConfig fc){
-		logger.info("HespDesk-API | SimpleCORSFilter loaded");
+		logger.info("Eclesys-API | SimpleCORSFilter loaded");
 	}
 	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
+		System.out.println("teste");
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpServletRequest request = (HttpServletRequest) req;
-		response.setHeader("Acces-Control-Allow-Origin", "*");
-		response.setHeader("Acces-Control-Allow-Origin", "POST, GET, OPTIONS, DELETE, PUT");
-		response.setHeader("Acces-Control-Allow-Origin", "3600");
-		response.setHeader("Acces-Control-Allow-Origin", "ed-with, authorization, Content-Type, Authorization");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+		response.setHeader("Access-Control-Max-Age", "3600");
+		response.setHeader("Access-Control-Allow-Headers", "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN");
 		
 		if("OPTIONS".equalsIgnoreCase(request.getMethod())){
 			response.setStatus(HttpServletResponse.SC_OK);
