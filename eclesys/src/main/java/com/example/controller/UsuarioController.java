@@ -55,7 +55,7 @@ public class UsuarioController {
 				return ResponseEntity.badRequest().body(response);
 			}
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			UsuarioEntity userPersisted = (UsuarioEntity) usuarioService.createOrUpdate(user);
+			UsuarioEntity userPersisted = (UsuarioEntity) usuarioService.save(user);
 			response.setData(userPersisted);
 		} catch (DuplicateKeyException dE) {
 			response.getErrors().add("E-mail already registered !");
@@ -100,6 +100,9 @@ public class UsuarioController {
 				result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 				return ResponseEntity.badRequest().body(response);
 			}
+			usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+			UsuarioEntity userPersisted = (UsuarioEntity) usuarioService.save(usuario);
+			response.setData(userPersisted);
 		}catch(Exception e){
 			
 		}

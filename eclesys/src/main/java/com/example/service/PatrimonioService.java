@@ -2,6 +2,9 @@ package com.example.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
 
 import com.example.entity.PatrimonioEntity;
 import com.example.entity.PessoaEntity;
@@ -9,7 +12,13 @@ import com.igrejaApp.Exceptions.InvalidFieldException;
 
 public interface PatrimonioService extends Serializable{
 
-	public List <PatrimonioEntity> findByDescricao(String descricao) throws InvalidFieldException;
-	public List <PatrimonioEntity> findByLocalizacao(String localizacao) throws InvalidFieldException;
-	public PatrimonioEntity save(PatrimonioEntity patrimonio) throws InvalidFieldException;
+	public Page<PatrimonioEntity> findByParameters (int page, 
+			int count,
+			String descricao,
+			String localizacao,
+			String departamentoId) ;
+	public Optional<PatrimonioEntity> findById(String Id);
+	public PatrimonioEntity save(PatrimonioEntity patrimonio);
+	public void Delete(String id) ;
+	public Page<PatrimonioEntity> findAll(int page, int count);
 }

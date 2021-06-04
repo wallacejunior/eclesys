@@ -1,6 +1,7 @@
 package com.example.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.EnderecoEntity;
@@ -8,7 +9,7 @@ import com.example.repository.EnderecoRepository;
 import com.example.service.EnderecoService;
 import com.igrejaApp.Exceptions.InvalidFieldException;
 
-@Service
+@Component
 public class EnderecoServiceImpl implements EnderecoService {
 
 	/**

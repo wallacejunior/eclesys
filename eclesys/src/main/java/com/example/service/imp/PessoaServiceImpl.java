@@ -1,16 +1,19 @@
 package com.example.service.imp;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.PessoaEntity;
 import com.example.repository.PessoaRepository;
 import com.example.service.PessoaService;
-import com.igrejaApp.Exceptions.InvalidFieldException;
 
-@Service
+@Component
 public class PessoaServiceImpl implements PessoaService{
 
 	
@@ -19,27 +22,54 @@ public class PessoaServiceImpl implements PessoaService{
 	@Autowired
 	private PessoaRepository pessoaRepository;
 
+
 	@Override
-	public List<PessoaEntity> findByNome(String nome) throws InvalidFieldException {
-		return pessoaRepository.findByNome(nome);
+	public Page<PessoaEntity> findByParameters(int page, 
+												int count,
+												String nome,
+												String nascimento,
+												String fone, 
+												String email, 
+												String Sexo, 
+												String cpf, 
+												String estadoCivil, 
+												String Situacao, 
+												String endereco) {
+		Pageable pages = PageRequest.of(page, count);
+		return this.pessoaRepository.
+				findByNomeIgnoreCaseContainingAndNascimentoIgnoreCaseContainingAndFoneAndEmailIgnoreCaseContainingAndSexoAndCpfAndEstadoCivilIgnoreCaseContainingAndSituacaoIgnoreCaseContainingOrderByNomeDesc(
+				 nome, 
+				 nascimento, 
+				 fone,  
+				 email,  
+				 Sexo,  
+				 cpf,  
+				 estadoCivil,  
+				 Situacao, 
+				 //endereco, 
+				 pages);
+	}
+	
+	@Override
+	public Optional<PessoaEntity> findById(String id) {
+		return pessoaRepository.findById(Long.valueOf(id).longValue());
 		
 	}
 	
 	@Override
-	public List<PessoaEntity> findAll() throws InvalidFieldException{
-		return pessoaRepository.findAll();
-	}
-
-	@Override
-	public PessoaEntity save(PessoaEntity pessoa) throws InvalidFieldException {
+	public PessoaEntity save(PessoaEntity pessoa)  {
 		return pessoaRepository.save(pessoa);
 	}
 
 	@Override
-	public boolean Delete(Long id) throws InvalidFieldException {
-		boolean retorno=false;
-		pessoaRepository.deleteById(id);
-		return retorno;
+	public void Delete(String Id) {
+		pessoaRepository.deleteById(Long.valueOf(Id).longValue());
+	}
+
+	@Override
+	public Page<PessoaEntity> findAll(int page, int count) {
+		Pageable pages = PageRequest.of(page, count);
+		return this.pessoaRepository.findAll(pages);
 	}
 
 }

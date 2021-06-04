@@ -1,3 +1,5 @@
+import { SharedService } from 'src/app/services/shared.service';
+import { UsuarioService } from './services/usuario.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { routes } from './app.routes';
 import { MembroNewComponent } from './components/membro-new/membro-new.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,15 +22,15 @@ import { MembroNewComponent } from './components/membro-new/membro-new.component
     MenuComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
-    MembroNewComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     routes
   ],
-  providers: [],
+  providers: [UsuarioService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

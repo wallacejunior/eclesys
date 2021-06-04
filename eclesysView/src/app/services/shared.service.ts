@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
 import {Usuario} from './../model/usuario.model'
 
 @Injectable({
@@ -8,9 +8,9 @@ import {Usuario} from './../model/usuario.model'
 export class SharedService {
 
   public static instance : SharedService = null;
-  user: Usuario;
+  usuario: Usuario;
   token: string;
-  showTemplate = new EventEmitter();
+  showTemplate = new EventEmitter<boolean>();
 
   constructor() {
     return SharedService.instance = SharedService.instance || this;
@@ -24,9 +24,9 @@ export class SharedService {
    }
 
    isLoggedIn():boolean{
-     if(this.user == null){
+     if(this.usuario == null){
        return false;
      }
-     return this.user.email != '';
+     return this.usuario.email != '';
    }
 }

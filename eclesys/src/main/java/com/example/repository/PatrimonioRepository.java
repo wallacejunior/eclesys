@@ -1,15 +1,16 @@
 package com.example.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.entity.PatrimonioEntity;
 
 public interface PatrimonioRepository extends JpaRepository <PatrimonioEntity,Long>{
-
-	List<PatrimonioEntity> findByDescricao(String descricao);
-
-	List<PatrimonioEntity> findByLocalizacao(String localizacao);
-
+	
+	public Page<PatrimonioEntity>  findByDescricaoIgnoreCaseContainingAndLocalizacaoIgnoreCaseContainingOrderByLocalizacao (String descricao,
+			String localizacao,
+			//String departamentoId,
+			Pageable page);
+	//Optional<PatrimonioEntity> findById(String id) ;
 }

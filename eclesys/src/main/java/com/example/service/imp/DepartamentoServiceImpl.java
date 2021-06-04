@@ -1,14 +1,14 @@
 package com.example.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.example.entity.DepartamentoEntity;
 import com.example.repository.DepartamentoRepository;
 import com.example.service.DepartamentoService;
 import com.igrejaApp.Exceptions.InvalidFieldException;
 
-@Service
+@Component
 public class DepartamentoServiceImpl implements DepartamentoService {
 
 	/**

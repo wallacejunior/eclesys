@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.UsuarioEntity;
 import com.example.repository.UsuarioRepository;
 import com.example.service.UsuarioService;
 
-@Service
+@Component
 public class UsuarioServiceImpl implements UsuarioService{
 
 	
@@ -25,8 +26,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 		
 	}
 	
-	public Optional<UsuarioEntity> findById(String id) {
-		return usuarioRepository.findById(id);
+	public Optional<UsuarioEntity>  findById(String id) {
+		return usuarioRepository.findById(Long.valueOf(id).longValue());
 		
 	}
 	
@@ -35,13 +36,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return usuarioRepository.save(nome);
 	}
 	
-	public UsuarioEntity createOrUpdate(UsuarioEntity usuario)  {
-		return usuarioRepository.createOrUpdate(usuario);
-	}
 
 	@Override
 	public void Delete(String Id) {
-		usuarioRepository.deleteById(Id);
+		usuarioRepository.deleteById(Long.valueOf(Id).longValue());
 	}
 
 	@Override
