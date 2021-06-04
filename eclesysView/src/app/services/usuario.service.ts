@@ -1,5 +1,5 @@
 import { HELP_DESK_API } from './helpdesk.api';
-import {Usuario} from './../model/usuario.model';
+import {User} from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -12,16 +12,16 @@ export class UsuarioService {
 
   }
 
-  login(usuario: Usuario){
-    return this.http.post(`${HELP_DESK_API}/api/auth/`, usuario);
+  login(user: User){
+    return this.http.post(`${HELP_DESK_API}/api/auth/`, user);
   }
 
-  creatOrUpdate(usuario: Usuario){
-    if(usuario.id != null && usuario.id != ''){
-      return this.http.put(`${HELP_DESK_API}/api/user/`, usuario);
+  creatOrUpdate(user: User){
+    if(user.id != null && user.id != ''){
+      return this.http.put(`${HELP_DESK_API}/api/user/`, user);
     } else {  
-      usuario.id = null;
-      return this.http.post(`${HELP_DESK_API}/api/user/`, usuario);
+      user.id = null;
+      return this.http.post(`${HELP_DESK_API}/api/user/`, user);
     }
   }
 

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showTemplete: boolean = false;
+  showTemplate: boolean = false;
   public shared: SharedService;
   title = 'eclesysView';
 
@@ -17,7 +17,13 @@ export class AppComponent {
   }
   ngOnInit(){
     this.shared.showTemplate.subscribe(
-      show => this.showTemplete = show
+      show => this.showTemplate = show
     );
+  }
+
+  showContentWrapper(){
+    return{
+      'content-wrapper' : this.shared.isLoggedIn()
+    };
   }
 }

@@ -13,7 +13,7 @@ import { ResponseApi } from 'src/app/model/response-api';
 })
 export class MembroNewComponent implements OnInit {
 
-  @ViewChild('form') form: NgForm;
+  @ViewChild('form',{static: false}) form: NgForm;
   membro = new Membro('','','','','','','','','', null);
   shared : SharedService;
   message : {};
@@ -84,5 +84,13 @@ export class MembroNewComponent implements OnInit {
       'alert': true
     }
     this.classCss['alert-'+type] = true;
+  }
+
+  getFromGroupClass(isInvalid: boolean, isDirty):{}{
+    return{
+      'from-group' : true,
+      'has-erro': isInvalid && isDirty,
+      'has-sucess' : !isInvalid && isDirty
+    }
   }
 }
