@@ -13,7 +13,7 @@ import { ResponseApi } from 'src/app/model/response-api';
 })
 export class MembroNewComponent implements OnInit {
 
-  @ViewChild('form',{static: false}) form: NgForm;
+  @ViewChild('form') form: NgForm;
   membro = new Membro('','','','','','','','','', null);
   shared : SharedService;
   message : {};
