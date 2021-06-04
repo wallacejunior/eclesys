@@ -8,4 +8,4 @@ export const ROUTES: Routes = [
     {path: 'login', component: LoginComponent}
 ]
 
-export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES);
+export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES, { relativeLinkResolution: 'legacy' });
