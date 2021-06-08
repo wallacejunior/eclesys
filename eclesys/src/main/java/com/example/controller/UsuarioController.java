@@ -33,7 +33,7 @@ import com.example.response.Response;
 import com.igrejaApp.Exceptions.InvalidFieldException;
 
 @RestController
-@RequestMapping(value="api/user")
+@RequestMapping(value="/api/usuario")
 @CrossOrigin(origins = "*")
 public class UsuarioController {
 
@@ -45,17 +45,17 @@ public class UsuarioController {
 	
 	@PostMapping()
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	public ResponseEntity<Response<UsuarioEntity>> create(HttpServletRequest request, @RequestBody UsuarioEntity user,
+	public ResponseEntity<Response<UsuarioEntity>> create(HttpServletRequest request, @RequestBody UsuarioEntity usuario,
 			BindingResult result) {
 		Response<UsuarioEntity> response = new Response<UsuarioEntity>();
 		try {
-			validateCreateUser(user, result);
+			validateCreateUser(usuario, result);
 			if (result.hasErrors()) {
 				result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 				return ResponseEntity.badRequest().body(response);
 			}
-			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			UsuarioEntity userPersisted = (UsuarioEntity) usuarioService.save(user);
+			usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+			UsuarioEntity userPersisted = (UsuarioEntity) usuarioService.save(usuario);
 			response.setData(userPersisted);
 		} catch (DuplicateKeyException dE) {
 			response.getErrors().add("E-mail already registered !");
@@ -67,9 +67,9 @@ public class UsuarioController {
 		return ResponseEntity.ok(response);
 	}
 	
-	private void validateCreateUser(UsuarioEntity user, BindingResult result) {
-		if (user.getEmail() == null) {
-			result.addError(new ObjectError("User", "Email no information"));
+	private void validateCreateUser(UsuarioEntity usuario, BindingResult result) {
+		if (usuario.getEmail() == null) {
+			result.addError(new ObjectError("usuario", "Email no information"));
 			return;
 		}
 	}
@@ -78,13 +78,13 @@ public class UsuarioController {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<UsuarioEntity>> findById(@PathVariable("id") String id){
 		Response<UsuarioEntity> response = new Response<UsuarioEntity>();
-		Optional<UsuarioEntity> userOptional = usuarioService.findById(id);
-		UsuarioEntity user = userOptional.get();
-		if (user == null) {
+		Optional<UsuarioEntity> usuarioOptional = usuarioService.findById(id);
+		UsuarioEntity usuario = usuarioOptional.get();
+		if (usuario == null) {
 			response.getErrors().add("Register not found id:" + id);
 			return  ResponseEntity.badRequest().body(response);
 		}
-		response.setData(user);
+		response.setData(usuario);
 		return ResponseEntity.ok(response);
 	}
 	

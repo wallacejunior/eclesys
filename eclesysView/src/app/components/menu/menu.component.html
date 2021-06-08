@@ -12,22 +12,39 @@
         </div>
       </form>
       <!-- /.search form -->
-      <!-- sidebar menu -->
+      <!-- Administrador -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i>
-            <span>Secretaria</span>
+            <span>Administrador</span>
             <span class="pull-right-container">
               <span class="fa fa-angle-left pull right"></span>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>Cadastro de Membro</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i>Consulta de Membro</a></li>
+            <li><a [routerLink]="['/user-list']"><i class="fa fa-circle-o"></i>Lista de Usuários</a></li>
+            <li><a [routerLink]="['/user-new']"><i class="fa fa-circle-o"></i>Novo Usuário</a></li>
           </ul>
         </li>
       </ul>
+
+         <!-- Secretaria -->
+         <ul class="sidebar-menu" data-widget="tree">
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-edit"></i>
+              <span>Secretaria</span>
+              <span class="pull-right-container">
+                <span class="fa fa-angle-left pull right"></span>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>Cadastro de Membro</a></li>
+              <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i>Consulta de Membro</a></li>
+            </ul>
+          </li>
+        </ul>
     </section>
     <!-- /.sidebar -->
   </aside>

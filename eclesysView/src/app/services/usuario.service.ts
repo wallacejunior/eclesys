@@ -18,22 +18,22 @@ export class UsuarioService {
 
   creatOrUpdate(user: User){
     if(user.id != null && user.id != ''){
-      return this.http.put(`${HELP_DESK_API}/api/user/`, user);
+      return this.http.put(`${HELP_DESK_API}/api/usuario/`, user);
     } else {  
       user.id = null;
-      return this.http.post(`${HELP_DESK_API}/api/user/`, user);
+      return this.http.post(`${HELP_DESK_API}/api/usuario/`, user);
     }
   }
 
   findAll(page:number, count:number){
-    return this.http.get(`${HELP_DESK_API}/api/user/${page}/${count}` )
+    return this.http.get(`${HELP_DESK_API}/api/usuario/${page}/${count}` )
   }
 
   findById(id:string){
-    return this.http.get(`${HELP_DESK_API}/api/user/${id}` )
+    return this.http.get(`${HELP_DESK_API}/api/usuario/${id}` )
   }
 
   delete (id:string){
-    return this.http.delete(`${HELP_DESK_API}/api/user/${id}` )
+    return this.http.delete(`${HELP_DESK_API}/api/usuario/${id}` )
   }
 }
